@@ -17,7 +17,7 @@ namespace CrashRepro
 
 		public App()
 		{
-			ShowWindowCommand = ReactiveCommand.Create(ShowWindow);
+			CrashProcessCommand = ReactiveCommand.Create(EventHandlerProximateToCrash);
 
 			DataContext = this;
 		}
@@ -30,14 +30,10 @@ namespace CrashRepro
 			base.OnFrameworkInitializationCompleted();
 		}
 
-		public ICommand ShowWindowCommand { get; }
+		public ICommand CrashProcessCommand { get; }
 
-		public MainWindow? MainWindow { get; set; }
-
-		void ShowWindow()
+		void EventHandlerProximateToCrash()
 		{
-			MainWindow ??= new MainWindow();
-			MainWindow.Show();
 		}
 	}
 }
